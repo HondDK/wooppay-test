@@ -11,7 +11,7 @@ const Header = () => {
 
         <nav>
             <a className={""} href={"123"}><img className={"logo"} alt={"logo"} src={"/img/logo.svg"}/></a>
-            <button className={"header_catalog"}><img src={"img/menu.svg"} alt="burger menu"/>Каталог</button>
+            <button className={"header_catalog"}><img src={"img/menu.svg"} alt="burger menu"/>Сервисы</button>
             <div className={"header_input"}>
                 <input placeholder={"Поиск"}/>
                 <button className={"header_nav_search_btn"}>

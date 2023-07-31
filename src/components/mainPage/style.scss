@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inter:wght@600;700&family=Roboto&display=swap');
+
+%font-bold {
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+}
+
+%font-basic {
+  font-style: normal;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+
+  article {
+    margin: 0 auto;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+
+    .card_service {
+      padding: 15px;
+      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      transition: all 0.3s ease-out;
+      cursor: pointer;
+
+      .card_service_head {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &:hover {
+        margin: -2px;
+        border-radius: 0.1rem;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .0), 0 2px 6px 2px rgba(60, 64, 67, .15);
+      }
+    }
+
+    .form_overlay {
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+
+      form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: white;
+        width: 350px;
+
+
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+        border-radius: 0.5rem;
+
+        .form_content {
+          display: flex;
+          justify-content: space-between;
+
+          label {
+            @extend %font-bold;
+            font-size: 20px;
+
+            margin-top: 25px;
+            width: 24.75rem;
+            height: 2.875rem;
+          }
+
+          input {
+            @extend %font-basic;
+            margin-top: 15px;
+            width: 24.75rem;
+            height: 2.875rem;
+
+            border-radius: 0.5rem;
+            border: 1px solid var(--stroke-primary, #E4E7EE);
+            background: var(--background-white, #FFF);
+          }
+        }
+
+        button {
+          @extend %font-bold;
+          font-size: 20px;
+          color: white;
+
+          width: 350px;
+          height: 50px;
+          margin-top: 10px;
+
+          border-radius: 0.5rem;
+          background: var(--background-main-color, #0D63F3);
+        }
+      }
+    }
+  }
+}
