@@ -1,5 +1,6 @@
 import React from 'react'
 import CartButton from "./CartButton";
+import "./style.scss"
 
 const Header = () => {
     return (<header>

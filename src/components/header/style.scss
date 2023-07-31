@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inter:wght@600;700&family=Roboto&display=swap');
+
+%font-bold {
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+}
+
+%font-basic {
+  font-style: normal;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+
+header {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  padding-bottom: 0.69rem;
+
+  background: var(--background-white, #FFF);
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 5.68744rem;
+    height: 2.1875rem;
+  }
+
+  .header_contact {
+    display: flex;
+    flex-direction: row;
+    width: 24.6rem;
+    height: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+    padding: 5px;
+    padding-right: 25px
+
+  }
+
+  .header_catalog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 9.3125rem;
+    height: 2.875rem;
+
+    @extend %font-bold;
+    color: white;
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 0.5rem;
+    background: var(--button-gradient, linear-gradient(270deg, #4D5EF6 0%, #F64D4D 100%));
+  }
+
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .header_input {
+      width: 24.75rem;
+      height: 2.875rem;
+      display: flex;
+
+      input {
+        width: 24.75rem;
+        @extend %font-basic;
+
+        border-radius: 0.5rem 0rem 0rem 0.5rem;
+        border: 1px solid var(--stroke-primary, #E4E7EE);
+        background: var(--background-white, #FFF);
+      }
+
+      .header_nav_search_btn {
+        width: 3.75rem;
+        height: 2.875rem;
+
+        border-radius: 0rem 0.5rem 0.5rem 0rem;
+        background: var(--background-main-color, #0D63F3);
+
+        img {
+          display: flex;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .header_cart_btn {
+      display: flex;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0.7rem;
+
+      cursor: pointer;
+
+      border-radius: 0.5rem;
+      background: var(--background-secondary, #ECF4FF)
+    }
+
+    .header_login_btn {
+      @extend %font-bold;
+      display: flex;
+      width: 6.5625rem;
+      padding: 0.8125rem 0rem;
+      justify-content: center;
+      align-items: center;
+
+
+      border-radius: 0.625rem;
+      background: var(--button-gradient-20, linear-gradient(270deg, rgba(77, 94, 246, 0.20) 0%, rgba(246, 77, 77, 0.20) 100%));
+    }
+
+  }
+}
