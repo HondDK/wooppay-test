@@ -1,6 +1,7 @@
 import React from 'react'
 import CartButton from "./CartButton";
 import "./style.scss"
+import BurgerMenu from "./BurgerMenu";
 
 const Header = () => {
     return (<header>
@@ -11,7 +12,7 @@ const Header = () => {
 
         <nav>
             <a className={""} href={"123"}><img className={"logo"} alt={"logo"} src={"/img/logo.svg"}/></a>
-            <button className={"header_catalog"}><img src={"img/menu.svg"} alt="burger menu"/>Сервисы</button>
+            <BurgerMenu></BurgerMenu>
             <div className={"header_input"}>
                 <input placeholder={"Поиск"}/>
                 <button className={"header_nav_search_btn"}>
