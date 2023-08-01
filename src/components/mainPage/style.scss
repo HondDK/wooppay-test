@@ -97,11 +97,26 @@ main {
     border-radius: 0.5rem;
 
     .form_close_btn {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       cursor: pointer;
     }
 
+    .form_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+
+      p {
+        @extend %font-bold;
+        font-size: 25px;
+      }
+      img{
+        width: 150px;
+        height: 150px;
+      }
+    }
 
     .form_content {
       display: flex;

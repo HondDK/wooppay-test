@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import useFetchData from "../../hooks/useFetchData";
+import * as yup from 'yup';
 
 const Form = ({serviceName, closeForm}) => {
     const BASE_URL = "https://api.yii2-stage.test.wooppay.com";
@@ -9,43 +10,89 @@ const Form = ({serviceName, closeForm}) => {
     console.log(data);
 
     const [formData, setFormData] = useState({});
-
-    const handleInputChange = (fieldName, value) => {
-        setFormData({...formData, [fieldName]: value});
+    const [formErrors, setFormErrors] = useState({});
+    const handleInputChange = (item, value) => {
+        setFormData({...formData, [item.name]: value});
     };
+    console.log(formData)
+    const validationSchema = yup.object().shape(
+        data && data.fields.reduce((schema, field) => {
+            if (field.title !== null && field.title !== undefined && field.title.trim() !== '') {
+                if (field.type === "string") {
+                    schema[field.name] = yup
+                        .string()
+                        .required(`Поле "${field.title}" обязательно для заполнения`);
+                } else if (field.type === "amount") {
+                    schema[field.name] = yup
+                        .number()
+                        .typeError(`Введите число в поле "${field.title}"`)
+                        .required(`Поле "${field.title}" обязательно для заполнения`);
+                }
+            }
+            return schema;
+        }, {})
+    );
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        validationSchema.validate(formData, {abortEarly: false})
+            .then(() => {
+                // если форма валидная
+                console.log('Форма:', formData);
+            })
+            .catch((validationErrors) => {
+                //если форма не валидна
+                const newFormErrors = {};
+                validationErrors.inner.forEach(error => {
+                    newFormErrors[error.path] = error.message;
+                });
+                setFormErrors(newFormErrors);
+                console.log(formErrors)
+            });
+    };
     return (
-
         <form>
             {isLoading && <div className="custom-loader"></div>}
             {error && <p>Ошибка: {error}</p>}
-            <img onClick={closeForm} className={"form_close_btn"} alt={"123"}
+            <img onClick={closeForm} className={"form_close_btn"} alt={"close_form_button"}
                  src={"https://cdn4.iconfinder.com/data/icons/geomicons/32/672366-x-512.png"}/>
+            <div className={"form_header"}>
+                {data &&
+                    <>
+                        <p>{data.title}</p>
+                        <img alt={"logo_service"} src={data.picture_url}/>
+                    </>
+                }
+            </div>
             {data &&
                 data.fields &&
                 data.fields.map((item) => {
-                    // Проверяем, что item.title существует и не равен null или undefined и не является пустой строкой
-                    if (item.title !== null && item.title !== undefined && item.title.trim() !== "") {
-                        return (
+                    // Проверяем, скрыто ли поле
+                    if (!item.hidden) {
+                        return (<>
                             <div className={"form_content"} key={item.title}>
                                 <label>{item.title}</label>
                                 <input
-                                    type="text"
-                                    value={formData[item.title] || ''}
-                                    onChange={(e) => handleInputChange(item.title, e.target.value)}
+                                    type={item.type === "amount" ? "number" : "text"}
+                                    value={formData[item.name] || ''}
+                                    onChange={(e) => handleInputChange(item, e.target.value)}
                                 />
                             </div>
-                        );
+                        </>);
                     } else {
                         return null; // Если item.title равен null или undefined или пустая строка, пропускаем отображение
                     }
                 })}
-            <button>Оплатить</button>
+            {Object.keys(formErrors).length > 0 && (
+                <div className="form_errors">
+                    {Object.values(formErrors).map((error, index) => (
+                        <p key={index}>{error}</p>
+                    ))}
+                </div>
+            )}
+            <button onClick={handleSubmit}>Оплатить</button>
         </form>
-
-
     );
-
 };
 
 export default Form;
