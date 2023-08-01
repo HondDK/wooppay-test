@@ -1,22 +1,22 @@
 import React from 'react'
 import useFetchData from "../../hooks/useFetchData";
 
-const Categories = ({BASE_URL}) => {
-
-
+const Categories = ({BASE_URL, updateIdCategory}) => {
     const CATEGORIES_URL = "/v1/service-category";
-
-
 
     const {data, isLoading, error} = useFetchData(BASE_URL + CATEGORIES_URL);
     const sortedData = data ? data.sort((a, b) => a.position - b.position) : null;
 
     console.log(data);
-    return (
-        <article>
-            {isLoading && <div className="custom-loader"></div>}
-            {error && <p>Ошибка: {error}</p>}
-            {sortedData && sortedData.map((item) => (<div key={item.id} className={"card_service"}>
+    const changeIdCategory = (id) => {
+        updateIdCategory(id)
+    }
+
+    return (<article>
+        {isLoading && <div className="custom-loader"></div>}
+        {error && <p>Ошибка: {error}</p>}
+        {sortedData && sortedData.map((item) => (
+            <div onClick={() => changeIdCategory(item.id)} key={item.id} className={"card_service"}>
                 <div className={"card_service_title"}>
                     <p>{item.title}</p>
                     <img src={item.picture_url} alt={item.name}/>
@@ -28,7 +28,7 @@ const Categories = ({BASE_URL}) => {
                             </div>
                         )}*/}
             </div>))}
-        </article>)
+    </article>)
 }
 
 export default Categories
