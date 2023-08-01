@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import useFetchData from "../../hooks/useFetchData";
 import ReactHtmlParser from 'html-react-parser';
 import Form from "./Form";
+import ImageWithPlaceholder from "../ImageWithPlaceholder";
+import TextExpander from "./TextExpander";
 
 const Services = ({BASE_URL, idCategory}) => {
 
@@ -40,13 +42,16 @@ const Services = ({BASE_URL, idCategory}) => {
                     <div key={item.id} className={"card_service"}>
                         <div className={"card_service_title"}>
                             <p>{item.title}</p>
-                            <img src={item.picture_url} alt={item.name}/>
+                            <ImageWithPlaceholder src={item.picture_url} alt={item.name}/>
                         </div>
                         {ReactHtmlParser(item.commission_info)}
                         <p>{item.site}</p>
-                        {ReactHtmlParser(item.instruction)}
                         <p className={"card_service_description_p"}>{ReactHtmlParser(item.description)}</p>
                         <p className={"card_service_description_p"}>{ReactHtmlParser(item.description_company)}</p>
+                        {
+                            item.instruction &&
+                            <TextExpander instruction={"Как оплатить"} content={ReactHtmlParser(item.instruction)}/>
+                        }
                         <button className={"article_payment_btn"} onClick={() => openForm(item.name)}>Оплатить</button>
                         {showForm && serviceName === item.name && (
                             <div className={"form_overlay"}>

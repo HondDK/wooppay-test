@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import useFetchData from "../../hooks/useFetchData";
 import * as yup from 'yup';
+import ImageWithPlaceholder from "../ImageWithPlaceholder";
 
 const Form = ({serviceName, closeForm}) => {
     const BASE_URL = "https://api.yii2-stage.test.wooppay.com";
@@ -60,7 +61,7 @@ const Form = ({serviceName, closeForm}) => {
                 {data &&
                     <>
                         <p>{data.title}</p>
-                        <img alt={"logo_service"} src={data.picture_url}/>
+                        <ImageWithPlaceholder alt={"logo_service"} src={data.picture_url}/>
                     </>
                 }
             </div>

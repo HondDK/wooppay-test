@@ -1,5 +1,6 @@
 import React from 'react'
 import useFetchData from "../../hooks/useFetchData";
+import ImageWithPlaceholder from "../ImageWithPlaceholder";
 
 const Categories = ({BASE_URL, updateIdCategory, searchQuery}) => {
     const CATEGORIES_URL = "/v1/service-category";
@@ -21,14 +22,15 @@ const Categories = ({BASE_URL, updateIdCategory, searchQuery}) => {
         : [];
 
     return (
-        <article>
+        <article className={"category"}>
             {isLoading && <div className="custom-loader"></div>}
             {error && <p>Ошибка: {error}</p>}
+            {!isLoading && filteredAndSortedItems && filteredAndSortedItems.length === 0 && <p>Ничего не найдено...</p>}
             {filteredAndSortedItems && filteredAndSortedItems.map((item) => (
-                <div onClick={() => changeIdCategory(item.id)} key={item.id} className={"card_service"}>
-                    <div className={"card_service_title"}>
+                <div onClick={() => changeIdCategory(item.id)} key={item.id} className={"card_category"}>
+                    <div className={"card_category_title"}>
                         <p>{item.title}</p>
-                        <img src={item.picture_url} alt={item.name}/>
+                        <ImageWithPlaceholder src={item.picture_url} alt={item.name}/>
                     </div>
                     <p className={"card_service_description_p"}>{item.description}</p>
                 </div>

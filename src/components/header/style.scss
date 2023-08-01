@@ -26,6 +26,7 @@ header {
   display: flex;
   flex-direction: column;
 
+
   margin: 0 auto;
   padding-bottom: 0.69rem;
 
@@ -79,6 +80,8 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 70%;
+    margin: 0 auto;
 
     .header_input {
       width: 24.75rem;

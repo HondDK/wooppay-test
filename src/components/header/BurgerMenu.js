@@ -14,7 +14,12 @@ const BurgerMenu = () => {
     };
 
     return (<div>
-
+        {isLoading && <div className="custom-loader"></div>}
+        {error && <p>Ошибка: {error}</p>}
+        <button onClick={handleMenuToggle} className={"header_catalog"}>
+            <img src={"img/menu.svg"} alt="burger menu"/>
+            Категории
+        </button>
         <nav className={isMenuOpen ? 'menu open' : 'menu'}>
             <ul>
                 {data && data.map((item) => <>

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inter:wght@600;700&family=Roboto&display=swap');
 
+$text-color: #333;
+$transition-time: 0.3s;
+
 %font-bold {
   font-style: normal;
   font-family: 'Inter', sans-serif;
@@ -11,6 +14,46 @@
 }
 
 
+.text-container {
+  width: 95%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: height $transition-time ease-in-out;
+
+  .instruction {
+    color: blue;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .arrow {
+      margin-left: 5px;
+    }
+  }
+
+  img {
+    width: 100%;
+    align-items: center;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .text {
+    color: $text-color;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-time ease-in-out;
+  }
+
+  &.expanded {
+    .text {
+      max-height: 1000px;
+    }
+  }
+
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -19,7 +62,7 @@ main {
   article {
     @extend %font-basic;
     margin: 0 auto;
-    width: 1200px;
+    width: 1100px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
@@ -32,23 +75,28 @@ main {
       border-radius: 0.5rem;
       overflow: hidden;
 
+
       .card_service_title {
         display: flex;
         justify-content: space-between;
-        @extend %font-bold;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+          @extend %font-bold;
+          font-size: 25px;
+        }
       }
 
       img {
-        max-width: 150px
-
+        max-width: 150px;
+        max-height: 150px;
       }
 
       .card_service_description_p {
         @extend %font-basic;
         font-size: 16px;
       }
-
-
     }
 
     .article_payment_btn {
@@ -62,11 +110,40 @@ main {
       cursor: pointer;
       border-radius: 0.5rem;
       background: var(--background-main-color, #0D63F3);
-      transition: all 0.3s ease-out;
+      transition: all $transition-time ease-out;
 
       &:hover {
         border-radius: 0.1rem;
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .0), 0 2px 6px 2px rgba(60, 64, 67, .15);
+      }
+    }
+
+  }
+
+  .category {
+    @extend %font-basic;
+    margin: 0 auto;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+
+    .card_category {
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+
+      .card_category_title {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+        @extend %font-bold;
       }
     }
 
@@ -113,7 +190,7 @@ main {
 
       p {
         @extend %font-bold;
-        font-size: 25px;
+        font-size: 20px;
       }
       img{
         width: 150px;
@@ -158,5 +235,7 @@ main {
       border-radius: 0.5rem;
       background: var(--background-main-color, #0D63F3);
     }
+
+
   }
 }
