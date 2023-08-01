@@ -9,17 +9,18 @@ const Header = ({updateSearchQuery}) => {
         updateSearchQuery(id)
     }
 
-    return (<header>
-        <div className={"header_contact"}>
-            <p>{"@@gmail"}</p>
-            <p>{"RU"}</p>
-        </div>
-        <nav>
-            <a className={""} href={"123"}><img className={"logo"} alt={"logo"} src={"/img/logo.svg"}/></a>
-            <button className={"header_catalog"}><img src={"img/menu.svg"} alt="burger menu"/>
-                Категории
-            </button>
-            <div className={"header_input"}>
+    return (
+        <header>
+            <div className={"header_contact"}>
+                <p>{"@@gmail"}</p>
+                <p>{"RU"}</p>
+            </div>
+            <nav>
+                <a className={""} href={"123"}><img className={"logo"} alt={"logo"} src={"/img/logo.svg"}/></a>
+                <button className={"header_catalog"}><img src={"img/menu.svg"} alt="burger menu"/>
+                    Категории
+                </button>
+                <div className={"header_input"}>
                 <input onChange={(e) => changeSearchQuery(e.target.value)} placeholder={"Поиск"}/>
                 <BurgerMenu></BurgerMenu>
                 <button className={"header_nav_search_btn"}>
@@ -30,7 +31,7 @@ const Header = ({updateSearchQuery}) => {
             <CartButton src={"/img/shopping_cart.svg"}></CartButton>
             <a className={"header_login_btn"} href={"123"}>Логин</a>
         </nav>
-    </header>)
-}
+    </header>
+    )}
 
 export default Header

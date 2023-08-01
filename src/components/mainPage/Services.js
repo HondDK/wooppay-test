@@ -1,10 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import useFetchData from "../../hooks/useFetchData";
 import ReactHtmlParser from 'html-react-parser';
+import Form from "./Form";
 
 const Services = ({BASE_URL, idCategory}) => {
 
     const SERVICE_URL = `/v1/service?category_id=${idCategory}`
+
+    const [showForm, setShowForm] = useState(false);
+    const [serviceName, setServiceName] = useState("");
+
+    const openForm = (name) => {
+        setShowForm(true);
+        setServiceName(name);
+    }
+    const closeForm = () => {
+        setShowForm(false);
+    }
+
+
 
     const {
         data,
@@ -33,12 +47,12 @@ const Services = ({BASE_URL, idCategory}) => {
                         {ReactHtmlParser(item.instruction)}
                         <p className={"card_service_description_p"}>{ReactHtmlParser(item.description)}</p>
                         <p className={"card_service_description_p"}>{ReactHtmlParser(item.description_company)}</p>
-                        <button>Оплатить</button>
-                        {/*{showForm && serviceName === item.name && (
+                        <button className={"article_payment_btn"} onClick={() => openForm(item.name)}>Оплатить</button>
+                        {showForm && serviceName === item.name && (
                             <div className={"form_overlay"}>
-                                <Form serviceName={item.name}></Form>
+                                <Form closeForm={closeForm} serviceName={item.name}></Form>
                             </div>
-                        )}*/}
+                        )}
                     </div>
                 ))}
         </article>)
