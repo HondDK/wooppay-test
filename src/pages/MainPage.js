@@ -19,13 +19,18 @@ const MainPage = () => {
     const updateIdCategory = (data) => {
         setIdCategory(data);
     };
+    const [searchQuery, setSearchQuery] = useState('');
+    const updateSearchQuery = (data) => {
+        setSearchQuery(data);
+    }
+
 
     return (<>
-        <Header></Header>
+        <Header updateSearchQuery={updateSearchQuery}></Header>
         <main>
             {/*<ImageSlider images={images}></ImageSlider>*/}
             {!idCategory &&
-                <Categories updateIdCategory={updateIdCategory} BASE_URL={BASE_URL}/>
+                <Categories searchQuery={searchQuery} updateIdCategory={updateIdCategory} BASE_URL={BASE_URL}/>
             }
             {idCategory &&
                 <Services idCategory={idCategory} BASE_URL={BASE_URL}/>

@@ -14,8 +14,7 @@ const BurgerMenu = () => {
     };
 
     return (<div>
-        <button className={"header_catalog"} onClick={handleMenuToggle}><img src={"img/menu.svg"} alt="burger menu"/>Категории
-        </button>
+
         <nav className={isMenuOpen ? 'menu open' : 'menu'}>
             <ul>
                 {data && data.map((item) => <>

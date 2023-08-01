@@ -3,18 +3,25 @@ import CartButton from "./CartButton";
 import "./style.scss"
 import BurgerMenu from "./BurgerMenu";
 
-const Header = () => {
+const Header = ({updateSearchQuery}) => {
+
+    const changeSearchQuery = (id) => {
+        updateSearchQuery(id)
+    }
+
     return (<header>
         <div className={"header_contact"}>
             <p>{"@@gmail"}</p>
             <p>{"RU"}</p>
         </div>
-
         <nav>
             <a className={""} href={"123"}><img className={"logo"} alt={"logo"} src={"/img/logo.svg"}/></a>
-            <BurgerMenu></BurgerMenu>
+            <button className={"header_catalog"}><img src={"img/menu.svg"} alt="burger menu"/>
+                Категории
+            </button>
             <div className={"header_input"}>
-                <input placeholder={"Поиск"}/>
+                <input onChange={(e) => changeSearchQuery(e.target.value)} placeholder={"Поиск"}/>
+                <BurgerMenu></BurgerMenu>
                 <button className={"header_nav_search_btn"}>
                     <img alt={"search"} src={"/img/search.svg"}/>
                 </button>
