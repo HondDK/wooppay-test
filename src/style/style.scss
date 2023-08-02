@@ -4,10 +4,11 @@
   max-width: 150px;
 }
 
-body{
-  background: url("../../public/img/blob-scene-haikei.svg");
+body {
+  background: url("../../public/img/blob-scene-haikei.svg") fixed;
   background-size: cover;
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 a {

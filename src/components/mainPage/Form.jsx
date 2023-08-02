@@ -8,15 +8,11 @@ const Form = ({BASE_URL, serviceName, closeForm}) => {
 
     const {data, isLoading, error} = useFetchData(BASE_URL + SERVICE_URL);
 
-    console.log(data);
-
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
     const handleInputChange = (item, value) => {
         setFormData({...formData, [item.name]: value});
     };
-    console.log(formData)
-
 
     //Схема валидации
     const validationSchema = yup.object().shape(

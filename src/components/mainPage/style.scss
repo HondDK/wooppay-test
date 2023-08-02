@@ -60,9 +60,10 @@ main {
   margin-top: 35px;
   align-items: center;
 
-  article {
-    @extend %font-basic;
+  @extend %font-basic;
 
+  article {
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
@@ -70,10 +71,10 @@ main {
     grid-row-gap: 25px;
 
     .card_service {
-      max-width: 700px;
-      min-width: 700px;
+      margin: 0 auto 25px;
+      max-width: 95%;
+      min-width: 95%;
 
-      margin: 0 auto;
       padding: 15px;
       box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
       border-radius: 0.5rem;
@@ -132,14 +133,16 @@ main {
 
   .category {
     @extend %font-basic;
-    margin: 0 auto;
-    max-width: 1100px;
+
+    margin: 0 auto 25px;
+    max-width: 95%;
+    min-width: 95%;
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
     grid-column-gap: 15px;
     grid-row-gap: 25px;
-
 
     .card_category {
       padding: 15px;

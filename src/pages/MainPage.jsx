@@ -21,31 +21,22 @@ const MainPage = () => {
     }
 
     const SEARCH_URL = `/v1/service/search?name=${searchQuery}`;
-    const {data, isLoading, error} = useFetchData(BASE_URL + SEARCH_URL);
+    const {searchData, isLoading, error} = useFetchData(BASE_URL + SEARCH_URL);
 
 
     return (
         <>
             <Header updateSearchQuery={updateSearchQuery}/>
             <main>
-                {!idCategory && !searchQuery && (
-                    <Categories
-                        updateIdCategory={updateIdCategory}
-                        BASE_URL={BASE_URL}
-                    />
-                )}
-                {((idCategory && !searchQuery) || (idCategory && searchQuery)) && (
-                    <Services
+                {!idCategory && !searchQuery && (<Categories updateIdCategory={updateIdCategory} BASE_URL={BASE_URL}/>)}
+                {searchQuery && !searchData === 0 && <p style={{color: 'white'}}>Ничего не найдено..</p>}
+                {searchQuery && !isLoading && error && <p style={{color: 'white'}}>Ошибка:{error}</p>}
+                {((idCategory && !searchQuery) || (idCategory && searchQuery)) && (<Services
                         searchQuery={searchQuery}
                         idCategory={idCategory}
                         BASE_URL={BASE_URL}
-                    />
-                )}
-                {isLoading}
-                {searchQuery && !data === 0 && (
-                    <p style={{color: "white"}}>Ничего не найдено..</p>
-                )}
-                {searchQuery && !isLoading && error && <p style={{color: "white"}}>Ошибка:{error}</p>}
+                        searchData={searchData}
+                    />)}
             </main>
         </>);
 };

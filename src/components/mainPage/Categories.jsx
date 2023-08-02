@@ -8,11 +8,9 @@ const Categories = ({BASE_URL, updateIdCategory, searchQuery}) => {
     const {data, isLoading, error} = useFetchData(BASE_URL + CATEGORIES_URL);
     const sortedData = data ? data.sort((a, b) => a.position - b.position) : null
 
-    console.log(data);
     const changeIdCategory = (id) => {
         updateIdCategory(id)
     }
-
 
     return (
         <article className={"category"}>
