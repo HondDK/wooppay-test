@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import useFetchData from "../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData.js";
 import * as yup from 'yup';
-import ImageWithPlaceholder from "../ImageWithPlaceholder";
+import ImageWithPlaceholder from "../ImageWithPlaceholder.jsx";
 
-const Form = ({serviceName, closeForm}) => {
-    const BASE_URL = "https://api.yii2-stage.test.wooppay.com";
+const Form = ({BASE_URL, serviceName, closeForm}) => {
     const SERVICE_URL = `/v1/service/${serviceName}`;
 
     const {data, isLoading, error} = useFetchData(BASE_URL + SERVICE_URL);
+
     console.log(data);
 
     const [formData, setFormData] = useState({});
@@ -16,6 +16,8 @@ const Form = ({serviceName, closeForm}) => {
         setFormData({...formData, [item.name]: value});
     };
     console.log(formData)
+
+
     const validationSchema = yup.object().shape(
         data && data.fields.reduce((schema, field) => {
             if (field.title !== null && field.title !== undefined && field.title.trim() !== '') {
@@ -35,7 +37,6 @@ const Form = ({serviceName, closeForm}) => {
     );
     const handleSubmit = (e) => {
         e.preventDefault();
-
         validationSchema.validate(formData, {abortEarly: false})
             .then(() => {
                 // если форма валидная
@@ -51,6 +52,7 @@ const Form = ({serviceName, closeForm}) => {
                 console.log(formErrors)
             });
     };
+
     return (
         <form>
             {isLoading && <div className="custom-loader"></div>}

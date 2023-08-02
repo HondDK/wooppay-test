@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-const useFetchData = (url) => {
+const useFetchData = (url) => {                                       //fetch запрос на сервер
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ const useFetchData = (url) => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(url, );
+                const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error("Ошибка получения данных");
                 }
