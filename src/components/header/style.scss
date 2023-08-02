@@ -74,7 +74,7 @@ header {
 
     .header_input {
       display: flex;
-      width: 24.75rem;
+      width: 30%;
       height: 2.875rem;
 
       input {
@@ -90,9 +90,12 @@ header {
         width: 3.75rem;
         height: 2.875rem;
 
+        cursor: pointer;
+
         border: 0;
         border-radius: 0rem 0.5rem 0.5rem 0rem;
         background: var(--background-main-color, #0D63F3);
+
         img {
           display: flex;
           margin: 0 auto;

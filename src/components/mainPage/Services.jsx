@@ -5,8 +5,18 @@ import Form from "./Form.jsx";
 import ImageWithPlaceholder from "../ImageWithPlaceholder.jsx";
 import TextExpander from "./TextExpander.jsx";
 
-const Services = ({BASE_URL, idCategory}) => {
-    const SERVICE_URL = `/v1/service?category_id=${idCategory}`
+const Services = ({BASE_URL, idCategory, searchQuery}) => {
+    let SERVICE_URL = `/v1/service?category_id=${idCategory}`;
+    if (searchQuery) {
+        SERVICE_URL = `/v1/service/search?name=${searchQuery}`;
+    }
+
+    const {
+        data,
+        isLoading,
+        error
+    } = useFetchData(BASE_URL + SERVICE_URL);
+    console.log(data)
 
     const [showForm, setShowForm] = useState(false);
     const [serviceName, setServiceName] = useState("");
@@ -22,13 +32,7 @@ const Services = ({BASE_URL, idCategory}) => {
 
     }
 
-    const {
-        data,
-        isLoading,
-        error
-    } = useFetchData(BASE_URL + SERVICE_URL);
 
-    console.log(data)
     return (
         <article>
             {isLoading && <div className="custom-loader"></div>}

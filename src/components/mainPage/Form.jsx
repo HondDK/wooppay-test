@@ -18,6 +18,7 @@ const Form = ({BASE_URL, serviceName, closeForm}) => {
     console.log(formData)
 
 
+    //Схема валидации
     const validationSchema = yup.object().shape(
         data && data.fields.reduce((schema, field) => {
             if (field.title !== null && field.title !== undefined && field.title.trim() !== '') {
@@ -58,7 +59,7 @@ const Form = ({BASE_URL, serviceName, closeForm}) => {
             {isLoading && <div className="custom-loader"></div>}
             {error && <p>Ошибка: {error}</p>}
             <img onClick={closeForm} className={"form_close_btn"} alt={"close_form_button"}
-                 src={"https://cdn4.iconfinder.com/data/icons/geomicons/32/672366-x-512.png"}/>
+                 src={"./img/close_btn.png"}/>
             <div className={"form_header"}>
                 {data &&
                     <>

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./style.scss"
 
 const Header = ({updateSearchQuery}) => {
 
-    const changeSearchQuery = (id) => {
-        updateSearchQuery(id)
+    const [searchData, setSearchData] = useState("");
+    const changeSearchQuery = (query) => {
+        setSearchData(query)
+    }
+    const handleSubmit = () => {
+        updateSearchQuery(searchData)
     }
 
     return (
@@ -16,12 +20,11 @@ const Header = ({updateSearchQuery}) => {
             <nav>
                 <a href={"/"}>
                     <img className={"logo"} alt={"logo"}
-                         src={"https://www.wooppay.com/themes/wooppay_5/gfx/svg/woppayLogoGradient.svg"}/>
+                         src={"/img/logo.svg"}/>
                 </a>
-                {/*<BurgerMenu></BurgerMenu>*/}
                 <div className={"header_input"}>
                     <input onChange={(e) => changeSearchQuery(e.target.value)} placeholder={"Поиск"}/>
-                    <button className={"header_nav_search_btn"}>
+                    <button onClick={handleSubmit} className={"header_nav_search_btn"}>
                         <img alt={"search"} src={"/img/search.svg"}/>
                     </button>
                 </div>

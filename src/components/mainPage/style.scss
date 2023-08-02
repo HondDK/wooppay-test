@@ -58,11 +58,11 @@ main {
   display: flex;
   flex-direction: column;
   margin-top: 35px;
+  align-items: center;
 
   article {
     @extend %font-basic;
-    margin: 0 auto;
-    max-width: 1100px;
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
@@ -70,11 +70,17 @@ main {
     grid-row-gap: 25px;
 
     .card_service {
+      max-width: 700px;
+      min-width: 700px;
+
+      margin: 0 auto;
       padding: 15px;
       box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
       border-radius: 0.5rem;
       overflow: hidden;
+
       background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+      transition: all $transition-time ease-out;
 
       .card_service_title {
         display: flex;
@@ -85,6 +91,7 @@ main {
         p {
           @extend %font-bold;
           font-size: 25px;
+          padding: 15px;
         }
       }
 
@@ -97,7 +104,10 @@ main {
         @extend %font-basic;
         font-size: 16px;
       }
+
+
     }
+
 
     .article_payment_btn {
       font-size: 20px;
@@ -139,6 +149,9 @@ main {
 
       box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
       background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+      transition: all $transition-time ease-out;
+
       .card_category_title {
         display: flex;
         justify-content: space-between;
@@ -146,9 +159,17 @@ main {
 
         @extend %font-bold;
       }
+
+      .placeholder {
+        max-width: 50px;
+        max-height: 40px;
+      }
+
+      &:hover {
+        transform: scale(1.01);
+      }
+
     }
-
-
   }
 }
 
