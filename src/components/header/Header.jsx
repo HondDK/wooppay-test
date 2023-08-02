@@ -18,17 +18,14 @@ const Header = ({updateSearchQuery}) => {
                 <p>{"RU"}</p>
             </div>
             <nav>
-                <a href={"/"}>
-                    <img className={"logo"} alt={"logo"}
-                         src={"/img/logo.svg"}/>
-                </a>
+                <img className={"logo"} alt={"logo"} src={"./img/logo.svg"}/>
                 <div className={"header_input"}>
                     <input onChange={(e) => changeSearchQuery(e.target.value)} placeholder={"Поиск"}/>
                     <button onClick={handleSubmit} className={"header_nav_search_btn"}>
-                        <img alt={"search"} src={"/img/search.svg"}/>
+                        <img alt={"search"} src={"./img/search.svg"}/>
                     </button>
                 </div>
-                <a className={"header_login_btn"} href={"123"}>Логин</a>
+                <a className={"header_login_btn"} href={"https://honddk.github.io/wooppay-test/"}>Логин</a>
             </nav>
     </header>
     )}
