@@ -14,7 +14,7 @@ const Header = ({updateSearchQuery}) => {
                 <p>{"RU"}</p>
             </div>
             <nav>
-                <a className={""} href={"123"}>
+                <a href={"/"}>
                     <img className={"logo"} alt={"logo"}
                          src={"https://www.wooppay.com/themes/wooppay_5/gfx/svg/woppayLogoGradient.svg"}/>
                 </a>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import useFetchData from "../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData.js";
 
 const BurgerMenu = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
