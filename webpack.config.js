@@ -1,19 +1,18 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // Импорт плагина
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'index-bundle.js',
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                },
+                use: ["babel-loader"]
             },
             {
                 test: /\.scss$/,
@@ -25,8 +24,9 @@ module.exports = {
             },
         ],
     },
-    devServer: {
-        contentBase: './dist',
-        port: 3000,
-    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/index.html"
+        })
+    ]
 };
